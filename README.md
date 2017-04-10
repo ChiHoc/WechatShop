@@ -13,7 +13,7 @@
     * [获取指定状态的所有商品](#获取指定状态的所有商品)
     * [商品上下架](#商品上下架)
     * [获取指定分类的所有子分类](#获取指定分类的所有子分类)
-    * [获取指定子分类的所有SKU](#获取分类的所有SKU)
+    * [获取指定分类的所有SKU](#获取指定分类的库存信息)
     * [获取指定分类的所有属性](#获取指定分类的所有属性)
   * [库存管理接口](#库存管理接口)
     * [增加库存](#增加库存)
@@ -93,7 +93,7 @@ CHWechatShop::productStatus('product_id', CHWechatShopConst::PRODUCT_SHELVE);
 CHWechatShop::getCategories('cat_id');
 ```
 
-### 获取分类的所有SKU
+### 获取指定分类的库存信息
 
 ```php
 CHWechatShop::getCategorySKU('cat_id');
