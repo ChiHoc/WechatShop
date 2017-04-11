@@ -26,9 +26,9 @@ class CHWechatShopConst
 
     // =========== 运费承担 =============
     // 买家承担运费
-    const BUYER_PAY_DELIVERY_FEE = 0;
+    const ASSUMER_BUYER = 0;
     // 卖家承担运费
-    const SELLER_PAY_DELIVERY_FEE = 1;
+    const ASSUMER_SELLER = 1;
 
     // =========== 是否包邮 =============
     // 邮递收费
@@ -107,4 +107,10 @@ class CHWechatShopConst
     const ORDER_STATUS_CLOSE = 6;
     // 维权中
     const ORDER_STATUS_COMPLAINT = 8;
+
+    // =========== 运费模版 =============
+    // 自定义运费模版
+    const DELIVERY_TEMPLATE_TYPE_CUSTOM = 0;
+    // 指定运费模版
+    const DELIVERY_TEMPLATE_TYPE_TEMPLATE = 1;
 }

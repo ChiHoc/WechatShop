@@ -10,7 +10,7 @@ namespace CHWechatShop;
  */
 class CHWechatAccessToken
 {
-    const APP_ID = 'xxxxxxxxxx';
+    const APP_ID = 'xxxxxxxxxxx';
     const APP_SECRET = 'xxxxxxxxxx';
 
     static $ERROR_CODE = array(
@@ -114,7 +114,6 @@ class CHWechatAccessToken
      * @return string token
      */
     public static function getToken() {
-//
 //        $token = $memCache->get_cache(CHWechatAccessToken::CACHE_WECHAT_ACCESS_TOKEN);
 //        if (!$token) {
             $curl_timeout = 5;

@@ -62,8 +62,7 @@ class CHWechatShopDelivery implements \JsonSerializable {
      * 获取订单id
      * @return string
      */
-    public function getOrderId()
-    {
+    public function getOrderId() {
         return $this->orderId;
     }
 
@@ -72,8 +71,10 @@ class CHWechatShopDelivery implements \JsonSerializable {
      * @param string $orderId
      * @return CHWechatShopDelivery
      */
-    public function setOrderId($orderId)
-    {
+    public function setOrderId($orderId) {
+        if (empty($orderId)) {
+            throw new \RuntimeException('OrderId invalid!');
+        }
         $this->orderId = $orderId;
         return $this;
     }
@@ -82,8 +83,7 @@ class CHWechatShopDelivery implements \JsonSerializable {
      * 获取物流公司id
      * @return string
      */
-    public function getDeliveryCompany()
-    {
+    public function getDeliveryCompany() {
         return $this->deliveryCompany;
     }
 
@@ -92,8 +92,10 @@ class CHWechatShopDelivery implements \JsonSerializable {
      * @param string $deliveryCompany
      * @return CHWechatShopDelivery
      */
-    public function setDeliveryCompany($deliveryCompany)
-    {
+    public function setDeliveryCompany($deliveryCompany) {
+        if (empty($deliveryCompany)) {
+            throw new \RuntimeException('DeliveryCompany invalid!');
+        }
         $this->deliveryCompany = $deliveryCompany;
         return $this;
     }
@@ -102,8 +104,7 @@ class CHWechatShopDelivery implements \JsonSerializable {
      * 获取运单id
      * @return string
      */
-    public function getDeliveryTrackNo()
-    {
+    public function getDeliveryTrackNo() {
         return $this->deliveryTrackNo;
     }
 
@@ -112,8 +113,7 @@ class CHWechatShopDelivery implements \JsonSerializable {
      * @param string $deliveryTrackNo
      * @return CHWechatShopDelivery
      */
-    public function setDeliveryTrackNo($deliveryTrackNo)
-    {
+    public function setDeliveryTrackNo($deliveryTrackNo) {
         $this->deliveryTrackNo = $deliveryTrackNo;
         return $this;
     }
@@ -122,8 +122,7 @@ class CHWechatShopDelivery implements \JsonSerializable {
      * 获取是否需要物流
      * @return int
      */
-    public function getNeedDelivery()
-    {
+    public function getNeedDelivery() {
         return $this->needDelivery;
     }
 
@@ -132,8 +131,10 @@ class CHWechatShopDelivery implements \JsonSerializable {
      * @param int $needDelivery
      * @return CHWechatShopDelivery
      */
-    public function setNeedDelivery($needDelivery)
-    {
+    public function setNeedDelivery($needDelivery) {
+        if ($needDelivery != CHWechatShopConst::NEED_DELIVERY && $needDelivery != CHWechatShopConst::NOT_NEED_DELIVERY) {
+            throw new \RuntimeException('NeedDelivery invalid!');
+        }
         $this->needDelivery = $needDelivery;
         return $this;
     }
@@ -142,8 +143,7 @@ class CHWechatShopDelivery implements \JsonSerializable {
      * 获取是否其他物流公司
      * @return int
      */
-    public function getIsOthers()
-    {
+    public function getIsOthers() {
         return $this->isOthers;
     }
 
@@ -152,8 +152,10 @@ class CHWechatShopDelivery implements \JsonSerializable {
      * @param int $isOthers
      * @return CHWechatShopDelivery
      */
-    public function setIsOthers($isOthers)
-    {
+    public function setIsOthers($isOthers) {
+        if ($isOthers != CHWechatShopConst::IS_OTHERS_DELIVERY_COMPANY && $isOthers != CHWechatShopConst::NOT_OTHERS_DELIVERY_COMPANY) {
+            throw new \RuntimeException('IsOthers invalid!');
+        }
         $this->isOthers = $isOthers;
         return $this;
     }

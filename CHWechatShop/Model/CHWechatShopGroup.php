@@ -80,6 +80,9 @@ class CHWechatShopGroup implements \JsonSerializable
      * @return CHWechatShopGroup
      */
     public function setGroupName($groupName) {
+        if (empty($groupName)) {
+            throw new \RuntimeException('GroupName invalid!');
+        }
         $this->groupName = $groupName;
         return $this;
     }
@@ -106,6 +109,9 @@ class CHWechatShopGroup implements \JsonSerializable
      * @return CHWechatShopGroup
      */
     public function addProduct($productId) {
+        if (empty($productId)) {
+            throw new \RuntimeException('ProductId invalid!');
+        }
         $this->productList[] = $productId;
         return $this;
     }

@@ -9,6 +9,8 @@
 namespace CHWechatShop\Model;
 
 
+use CHWechatShop\CHWechatShopConst;
+
 class CHWechatShopExpressTemplate implements \JsonSerializable
 {
     // 邮费模板id
@@ -112,6 +114,9 @@ class CHWechatShopExpressTemplate implements \JsonSerializable
      * @return CHWechatShopExpressTemplate
      */
     public function setName($name) {
+        if (empty($name)) {
+            throw new \RuntimeException('Name invalid!');
+        }
         $this->name = $name;
         return $this;
     }
@@ -130,6 +135,9 @@ class CHWechatShopExpressTemplate implements \JsonSerializable
      * @return CHWechatShopExpressTemplate
      */
     public function setAssumer($assumer) {
+        if ($assumer != CHWechatShopConst::ASSUMER_BUYER && $assumer != CHWechatShopConst::ASSUMER_SELLER) {
+            throw new \RuntimeException('Assumer invalid!');
+        }
         $this->assumer = $assumer;
         return $this;
     }
@@ -145,13 +153,16 @@ class CHWechatShopExpressTemplate implements \JsonSerializable
 
     /**
      * 添加默认邮费
-     * @param $type int
+     * @param $deliveryType int
      * @param $normalFee CHWechatShopExpressFee
      * @param $customFees array
      * @return CHWechatShopExpressTemplate
      */
-    public function addFee($type, CHWechatShopExpressFee $normalFee, $customFees) {
-        $this->topFeeData[] = array(self::TYPE => $type, self::NORMAL => $normalFee, self::CUSTOM => $customFees);
+    public function addFee($deliveryType, CHWechatShopExpressFee $normalFee, $customFees) {
+        if ($deliveryType != CHWechatShopConst::DELIVERY_TYPE_ID_EMS && $deliveryType != CHWechatShopConst::DELIVERY_TYPE_ID_EXPRESS && $deliveryType != CHWechatShopConst::DELIVERY_TYPE_ID_MAIL) {
+            throw new \RuntimeException('Delivery type error!');
+        }
+        $this->topFeeData[] = array(self::TYPE => $deliveryType, self::NORMAL => $normalFee, self::CUSTOM => $customFees);
         return $this;
     }
 
@@ -262,6 +273,9 @@ class CHWechatShopExpressFee implements \JsonSerializable
      * @return CHWechatShopExpressFee
      */
     public function setFee($startStandards, $startFees, $addStandards, $addFees) {
+        if ($startStandards < 0 || $startFees < 0 || $addStandards < 0 || $addFees < 0) {
+            throw new \RuntimeException('Fee invalid!');
+        }
         $this->startStandards = $startStandards;
         $this->startFees = $startFees;
         $this->addStandards = $addStandards;
@@ -277,6 +291,15 @@ class CHWechatShopExpressFee implements \JsonSerializable
      * @return CHWechatShopExpressFee
      */
     public function setCity($destCountry, $destProvince, $destCity) {
+        if (empty($destCountry)) {
+            throw new \RuntimeException('DestCountry invalid!');
+        }
+        if (empty($destProvince)) {
+            throw new \RuntimeException('DestProvince invalid!');
+        }
+        if (empty($destCity)) {
+            throw new \RuntimeException('DestCity invalid!');
+        }
         $this->destCountry = $destCountry;
         $this->destProvince = $destProvince;
         $this->destCity = $destCity;
