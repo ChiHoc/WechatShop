@@ -37,11 +37,19 @@ class UnitTest {
             'result' => CHWechatShop::uploadImage("image.png", "image.png"));
         $image = $result['uploadImage']['result']['image_url'];
 
-//        // 创建商品
-//        $product = new CHWechatShopProduct();
-//        $product->setName('测试商品')->setCategoryId('537074298')->setMainImage($image)->addImage($image)->addDetailText('添加描述')->addDetailText(date('Y-m-d h:m:s'));
-//        $result['productCreate'] = array('params' => array('product' => $product),
-//            'result' => CHWechatShop::productCreate($product));
+        // 创建商品
+        $product = new CHWechatShopProduct();
+        $product->setName('测试商品')
+            ->setCategoryId('537074298')
+            ->setMainImage($image)
+            ->addImage($image)
+            ->addDetailText('添加描述')
+            ->addDetailText(date('Y-m-d h:m:s'))
+            ->setPostFree(CHWechatShopConst::NOT_POST_FREE)
+            ->addCustomExpress(CHWechatShopConst::DELIVERY_TYPE_ID_EMS, 200)
+            ->addSku(null, 2000, $image, 30);
+        $result['productCreate'] = array('params' => array('product' => $product),
+            'result' => CHWechatShop::productCreate($product));
 
 //        // 获取分类
 //        $result['getCategories'] = array('params' => array('categoryId' => 538115192),

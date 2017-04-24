@@ -76,6 +76,16 @@ class CHWechatShopProduct implements \JsonSerializable
     const IS_UNDER_GUARANTY = 'isUnderGuaranty';
     // 是否支持退换货
     const IS_SUPPORT_REPLACE = 'isSupportReplace';
+    // 商品所在地地址
+    const LOCATION = 'location';
+    // 国家
+    const COUNTRY = 'country';
+    // 省份
+    const PROVINCE = 'province';
+    // 城市
+    const CITY = 'city';
+    // 地址
+    const ADDRESS = 'address';
 
     // ========= 运费信息 ==========
     const DELIVERY_INFO = 'delivery_info';
@@ -113,6 +123,7 @@ class CHWechatShopProduct implements \JsonSerializable
             $this->attrExtData[self::IS_HAS_RECEIPT] = 0;
             $this->attrExtData[self::IS_UNDER_GUARANTY] = 0;
             $this->attrExtData[self::IS_SUPPORT_REPLACE] = 0;
+            $this->attrExtData[self::LOCATION] = array();
 
             $this->deliveryInfoData = array();
             $this->deliveryInfoData[self::EXPRESS] = array();
@@ -557,6 +568,38 @@ class CHWechatShopProduct implements \JsonSerializable
      */
     public function getSupportReplace() {
         return $this->attrExtData[self::IS_SUPPORT_REPLACE];
+    }
+
+    /**
+     * 设置商品所在地地址
+     * @param $country string
+     * @param $province string
+     * @param $city string
+     * @return $this
+     */
+    public function setLocation($country, $province, $city) {
+        if (empty($country)) {
+            throw new \RuntimeException('Country invalid!');
+        }
+        if (empty($province)) {
+            throw new \RuntimeException('Province invalid!');
+        }
+        if (empty($city)) {
+            throw new \RuntimeException('City invalid!');
+        }
+        $this->attrExtData[self::LOCATION] = array(self::COUNTRY => $country, self::PROVINCE => $province, self::CITY => $city);
+        return $this;
+    }
+
+    /**
+     * 获取商品所在地地址
+     * @return array
+     */
+    public function getLocation() {
+        if (count($this->attrExtData[self::LOCATION])) {
+            return $this->attrExtData[self::LOCATION];
+        }
+        return null;
     }
 
     /**
