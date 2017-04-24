@@ -14,7 +14,7 @@ use CHWechatShop\Model\CHWechatShopShelfData4;
 use CHWechatShop\CHWechatShop;
 use CHWechatShop\CHWechatShopConst;
 
-class UnitTest {
+class PHPUnit_Util_Test {
 
     public static function register() {
         spl_autoload_register("UnitTest::loadClass");
@@ -31,26 +31,26 @@ class UnitTest {
         self::register();
 
         $result = array();
-
-        // 上传图片
-        $result['uploadImage'] = array('params' => array('imagePath' => "image.png"),
-            'result' => CHWechatShop::uploadImage("image.png", "image.png"));
-        $image = $result['uploadImage']['result']['image_url'];
-
-        // 创建商品
-        $product = new CHWechatShopProduct();
-        $product->setName('测试商品')
-            ->setCategoryId('537074298')
-            ->setMainImage($image)
-            ->addImage($image)
-            ->addDetailText('添加描述')
-            ->addDetailText(date('Y-m-d h:m:s'))
-            ->setPostFree(CHWechatShopConst::NOT_POST_FREE)
-            ->addCustomExpress(CHWechatShopConst::DELIVERY_TYPE_ID_EMS, 200)
-            ->addSku(null, 2000, $image, 30);
-        $result['productCreate'] = array('params' => array('product' => $product),
-            'result' => CHWechatShop::productCreate($product));
-
+//
+//        // 上传图片
+//        $result['uploadImage'] = array('params' => array('imagePath' => "image.png"),
+//            'result' => CHWechatShop::uploadImage("image.png", "image.png"));
+//        $image = $result['uploadImage']['result']['image_url'];
+//
+//        // 创建商品
+//        $product = new CHWechatShopProduct();
+//        $product->setName('测试商品')
+//            ->setCategoryId('537074298')
+//            ->setMainImage($image)
+//            ->addImage($image)
+//            ->addDetailText('添加描述')
+//            ->addDetailText(date('Y-m-d h:m:s'))
+//            ->setPostFree(CHWechatShopConst::NOT_POST_FREE)
+//            ->addCustomExpress(CHWechatShopConst::DELIVERY_TYPE_ID_EMS, 200)
+//            ->addSku(null, 2000, $image, 30);
+//        $result['productCreate'] = array('params' => array('product' => $product),
+//            'result' => CHWechatShop::productCreate($product));
+//
 //        // 获取分类
 //        $result['getCategories'] = array('params' => array('categoryId' => 538115192),
 //            'result' => CHWechatShop::getCategories(538115192));
@@ -230,6 +230,6 @@ class UnitTest {
     }
 }
 
-echo json_encode(UnitTest::test(), JSON_UNESCAPED_UNICODE);
+echo json_encode(PHPUnit_Util_Test::test(), JSON_UNESCAPED_UNICODE);
 
 ?>
