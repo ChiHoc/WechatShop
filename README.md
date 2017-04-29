@@ -275,3 +275,7 @@ CHWechatShop::orderClose('order_id');
 ```php
 CHWechatShop::uploadImage('filePath', "imageName");
 ```
+
+## LICENSE
+
+MIT
