@@ -17,7 +17,7 @@ use CHWechatShop\CHWechatShopConst;
 class PHPUnit_Util_Test {
 
     public static function register() {
-        spl_autoload_register("UnitTest::loadClass");
+        spl_autoload_register("PHPUnit_Util_Test::loadClass");
     }
 
     public static function loadClass($class) {
