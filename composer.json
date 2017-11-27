@@ -1,5 +1,15 @@
 {
     "name": "chiho/wechatshop",
-    "description": "微信小店接口PHP封装",
-    "version": "1.0.0"
+    "description": "Common interface for wechat shop",
+    "type": "package",
+    "require": {
+        "php": ">=5.5.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chiho Chan",
+            "email": "genioschen@gmail.com"
+        }
+    ]
 }
