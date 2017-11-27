@@ -275,7 +275,12 @@ CHWechatShop::orderClose('order_id');
 ```php
 CHWechatShop::uploadImage('filePath', "imageName");
 ```
+## Install
 
-## LICENSE
+Via Composer
 
-MIT
+$ composer require chiho/wechatshop -o
+
+## License
+
+The MIT License (MIT). Please see [License File](https://github.com/ChiHoc/WechatShop/blob/master/LICENSE) for more information.
