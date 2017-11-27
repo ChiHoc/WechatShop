@@ -1,8 +1,22 @@
-# 微信小店接口PHP封装
+# WechatShop
 
-**WechatShop**
+微信小店接口PHP封装
+
+## 官方文档
 
 微信小店api文档地址：[https://mp.weixin.qq.com/wiki/8/703923b7349a607f13fb3100163837f0.html](https://mp.weixin.qq.com/wiki/8/703923b7349a607f13fb3100163837f0.html)
+
+## Install
+
+Via Composer
+
+```php
+{
+    "require": {
+        "chiho/wechatshop": "1.0.0"
+    }
+}
+```
 
 ## 目录
 * [商品管理接口](#商品管理接口)
@@ -274,17 +288,6 @@ CHWechatShop::orderClose('order_id');
 
 ```php
 CHWechatShop::uploadImage('filePath', "imageName");
-```
-## Install
-
-Via Composer
-
-```php
-{
-    "require": {
-        "chiho/wechatshop": "1.0.0"
-    }
-}
 ```
 
 ## License
