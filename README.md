@@ -279,7 +279,13 @@ CHWechatShop::uploadImage('filePath', "imageName");
 
 Via Composer
 
-$ composer require chiho/wechatshop -o
+```php
+{
+    "require": {
+        "chiho/wechatshop": "1.0.0"
+    }
+}
+```
 
 ## License
 
