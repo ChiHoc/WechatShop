@@ -11,5 +11,12 @@
             "name": "Chiho Chan",
             "email": "genioschen@gmail.com"
         }
-    ]
+    ],
+    "homepage": "https://github.com/ChiHoc/WechatShop",
+    "autoload": {
+        "psr-4": {
+            "CHWechatShop\\CHWechatShop\\": "CHWechatShop/"
+        }
+    }
+
 }
